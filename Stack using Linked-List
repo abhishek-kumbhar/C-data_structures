@@ -1,0 +1,73 @@
+
+//		Linked-List Implementation of Stack		  //
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+struct node {
+  int data;
+  struct node * next;
+};
+
+struct node * top = NULL;
+
+struct node * createNode(int data) {
+	struct node * temp = (struct node *)malloc(sizeof(struct node));
+	temp->next = NULL;
+	temp->data = data;
+	return temp;
+}
+
+int getStackTop() {
+	return top->data;
+}
+
+bool isEmpty() {
+	return (top != NULL);
+}
+
+int pop() {
+	struct node * ptr = top;
+	int x = top->data;
+	top = top->next;
+	free(ptr);
+	return x;
+}
+
+void push(int data) {
+	struct node * temp = createNode(data);
+	if (top == NULL) {
+		top = temp;
+	} else {
+		temp->next = top;
+		top = temp;
+	}
+}
+
+void main (void) {
+	push(10);
+	push(11);
+	push(12);
+	push(13);
+	push(14);
+
+	printf("\nStackTop =  %d\n", getStackTop());
+	
+	printf("\nPoping elements from stack now ...");
+
+	for (int i = 0; i < 5; i++) {
+		printf("\n%d \n", pop());
+	}	
+
+	if (!isEmpty()) {
+		printf("\nStack is Empty...\n");
+	} else {
+		printf("\nStack is not Empty...\n");
+	}
+}
+
+
+
+
+
