@@ -65,6 +65,7 @@ void main (void) {
 	} else {
 		printf("\nStack is not Empty...\n");
 	}
+
 }
 
 
